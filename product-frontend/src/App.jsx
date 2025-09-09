@@ -2,10 +2,11 @@ import React, { useState, useEffect } from "react";
 import ProductList from "./components/ProductList";
 import AddProductForm from "./components/AddProductForm";
 import "./App.css";
-import { getProducts, addProduct, deleteProduct } from "./api/productApi";
+import { getProducts, addProduct, deleteProduct,updateProduct } from "./api/productApi";
 
 function App() {
   const [products, setProducts] = useState([]);
+  const [isEditing, setIsEditing] = useState(false);
   const [sortAsc, setSortAsc] = useState(true);
 const [search, setSearch] = useState("");
   useEffect(() => {
@@ -32,6 +33,10 @@ const [search, setSearch] = useState("");
 const filteredProducts = products.filter((p) =>
     p.name.toLowerCase().includes(search.toLowerCase())
   );
+  const handleUpdateProduct = async (id, updatedData) => {
+  const updatedProduct = await updateProduct(id, updatedData);
+  setProducts(products.map((p) => (p._id === id ? updatedProduct : p)));
+};
   return (
     <div className="container">
       <h1>Product Management App</h1>
@@ -46,8 +51,9 @@ const filteredProducts = products.filter((p) =>
       <button className="sort-btn" onClick={handleSort}>
         Sort by Price {sortAsc ? "⬆️" : "⬇️"}
       </button>
-      {/* <ProductList products={products} onDelete={handleDeleteProduct} /> */}
-      <ProductList products={filteredProducts} onDelete={handleDeleteProduct} />
+      <ProductList products={filteredProducts} 
+      onUpdate={handleUpdateProduct}
+      onDelete={handleDeleteProduct} />
     </div>
   );
 }

@@ -21,3 +21,11 @@ export const addProduct = async (product) => {
 export const deleteProduct = async (id) => {
   await fetch(`${API_URL}/${id}`, { method: "DELETE" });
 };
+export const updateProduct = async (id, updatedData) => { 
+   const res = await fetch(`${API_URL}/${id}`,{
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(updatedData),
+  });
+  return res.json();
+};

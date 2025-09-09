@@ -104,3 +104,43 @@
     grid-template-columns: repeat(4, 1fr); /* 4 columns */
   }
 }
+.button-group {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px; /* space between edit & delete buttons */
+  margin-top: 10px;
+}
+
+.edit-product {
+  background-color: #ffa500; /* orange */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 6px 12px;
+  font-size: 12px;
+  transition: background 0.2s;
+}
+
+.edit-product:hover {
+  background-color: #ff8c00; /* darker orange on hover */
+}
+
+/* Edit form inputs inside card */
+.edit-form input {
+  width: 100%;
+  padding: 6px 10px;
+  margin: 5px 0;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+.edit-form .edit-product {
+  width: 48%; /* two buttons side by side */
+  margin-right: 2%;
+}
+
+.edit-form .edit-product:last-child {
+  margin-right: 0;
+}
