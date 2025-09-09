@@ -16,13 +16,3 @@ app.use("/api/products", productRoutes);
 
 const port = process.env.PORT;
 app.listen(port, () => console.log(`Server running on port ${port}`));
-
-
-// mongoose
-//   .connect("mongodb://localhost:27017/productdb", { useNewUrlParser: true, useUnifiedTopology: true })
-//   .then(() => console.log("MongoDB connected"))
-//   .catch((err) => console.error("MongoDB connection error:", err));
-
-
-
-
