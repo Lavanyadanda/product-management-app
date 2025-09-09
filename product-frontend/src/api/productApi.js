@@ -1,8 +1,8 @@
-// const API_URL = "http://localhost:5000/api/products";
-const API_URL="https://product-management-app-yn49.onrender.com/api/products";
+const API_URL = "http://localhost:5000/api/products";
+//const API_URL="https://product-management-app-yn49.onrender.com/api/products";
 export const getProducts = async () => {
   try {
-    const res = await fetch({API_URL});
+    const res = await fetch("http://localhost:5000/api/products");
     if (!res.ok) throw new Error("Failed to fetch products");
     return await res.json();
   } catch (err) {
